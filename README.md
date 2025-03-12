@@ -3,7 +3,7 @@ A tool to check the health of your drives and ensure they are as old or new as y
 <br/><br/>
 With recent concerns about used drives being resold as new, it’s more important than ever to verify the condition of your storage devices. This tool helps you quickly assess the health, usage, ensuring you get exactly what you paid for.
 <br/><br/>
-  What This Tool Does:
+  What This Tool Does:<br/>
     - Health Status: Check for signs of wear, bad sectors, and overall lifespan.<br/>
     - Usage History: See how many hours the drive has been used and how much data has been written.<br/>
     - SMART Data Analysis: Review key health indicators reported by the drive itself.<br/>
