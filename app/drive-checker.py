@@ -95,7 +95,7 @@ def get_smart_data2(stdout):
     if "user_capacity" in smart_json:
         smart_info["Capacity"] = format_capacity(smart_json["user_capacity"]["bytes"])
     elif "nvme_total_capacity" in smart_json:
-        smart_info["Capacity"] = smart_json["nvme_total_capacity"]
+        smart_info["Capacity"] = format_capacity(smart_json["nvme_total_capacity"])
     else:
         smart_info["Capacity"] = -1
 
@@ -134,7 +134,7 @@ def get_drive_diagnosis(smart_info: dict) -> str:
     
      # 🚀 **Green - Healthy Condition**
     if power_on_hours == 'N/A' or power_on_hours == 1:
-        return "Brand New"  # Brand new condition
+        return "Fresh"  # Fresh condition
     
     # 🚀 **Green - Healthy Condition**
     if power_on_hours < MID_USAGE_THRESHOLD:
@@ -162,7 +162,7 @@ def scan_drives():
     try:
         result = subprocess.run(
             [SMARTCTL, '--scan'],
-            stdout=subprocess.PIPE,  # ✅ Compatible with Python 3.6
+            stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             universal_newlines=True,
             check=True
@@ -208,9 +208,16 @@ def output_drive_check_info_text(smart_data):
     RED = "\033[91m"  # Red
     RESET = "\033[0m"  # Reset to default terminal color
 
+    print("\nLEGEND:")
+    print(f"{GREEN}Green{RESET}: means the drive is either FRESH (up to 1 hour of usage time) or NEW (under 500 hours).")
+    print(f"{YELLOW}Yellow{RESET}: means the drive is USED (between 500 and 30,040 hours of usage time).")
+    print(f"{RED}Red{RESET}: means the drive is OLD, with over 4 years of usage time.")
+    print("     (Keep an eye on this one for errors, and consider replacing it with a new one.)\n")
+
+
     # Table Header
     print("{:<10} {:<28} {:<20} {:<18} {:<15} {:<10}".format(
-        "Device", "Model", "Serial", "Capacity", "Hours", "Usage (New/Used/Old)"
+        "Device", "Model", "Serial", "Capacity", "Hours", "Result"
     ))
     print("=" * 120)
 
@@ -224,7 +231,7 @@ def output_drive_check_info_text(smart_data):
             diagnosis = drive["Diagnosis"]
 
             # Assign color based on diagnosis
-            if diagnosis == "New" or diagnosis == "Brand New":
+            if diagnosis == "New" or diagnosis == "Fresh":
                 color = GREEN
             elif diagnosis == "Used":
                 color = YELLOW
@@ -294,7 +301,7 @@ def generate_drive_report_html(smart_infos):
             }
 
            /* Conditional styling for Diagnosis */
-            .brand-new { background-color: #7bff4f; }   /* Light Green - Brand New */
+            .brand-new { background-color: #7bff4f; }   /* Light Green - Fresh */
             .new { background-color: #03d103; }   /* Green - New */
             .used { background-color: #ffff00;  } /* Yellow - Used */
             .old { background-color: #ff3f3f; }   /* Red - Old */
@@ -306,7 +313,7 @@ def generate_drive_report_html(smart_infos):
     <body>
         <h3>45Drives Disk Check-Up</h3>
         <div>
-            <p><span class="brand-new"><b>Light Green</b></span> means the drive is Brand New, fresh out of the package.</p>
+            <p><span class="brand-new"><b>Light Green</b></span> means the drive is Fresh, brand new right out of the package.</p>
             <p><span class="new"><b>Green</b></span> means the drive is New, with under 500 hours of usage.</p>
             <p><span class="used"><b>Yellow</b></span> means the drive is Used, with between 500 and 30,040 hours (4 years) of usage.</p>
             <p><span class="old"><b>Red</b></span> means the drive is Old, with over 4 years of usage. Keep an eye on this one for errors, and consider replacing it with a new one.</p>
@@ -331,7 +338,7 @@ def generate_drive_report_html(smart_infos):
 
         # Assign a class based on diagnosis for conditional styling
         diagnosis_class = "unknown"
-        if diagnosis == "Brand New":
+        if diagnosis == "Fresh":
             diagnosis_class = "brand-new"
         elif diagnosis == "New":
             diagnosis_class = "new"
@@ -514,7 +521,8 @@ def open_pdf(filename):
 
 
 def intro_text():
-    print("With recent concerns about used drives being resold as new, it’s more important than ever to verify the condition of your storage devices. This tool helps you quickly assess the health, usage, ensuring you get exactly what you paid for.")
+    print("With recent concerns about used drives being resold as new, it’s more important than ever to verify the condition of your storage devices.")
+    print("This tool helps you quickly assess the health, usage, ensuring you get exactly what you paid for.")
     print("What This Tool Does:")
     print("\t✅ Health Status: Check for signs of wear, bad sectors, and overall lifespan.")
     print("\t✅ Usage History: See how many hours the drive has been used and how much data has been written.")
@@ -536,33 +544,29 @@ def main():
         run_as_admin()
     
     parser = argparse.ArgumentParser()
-    parser.add_argument("--quiet", action="store_true", default=False, required=False)
-    parser.add_argument("--include-non-aliased", action="store_true", default=False, required=False)
-    parser.add_argument("--output", type=str, default="json", required=False)
-    parser.add_argument("--drive-check", action="store_true", default=False, required=False)
+    parser.add_argument("--quiet", action="store_true", help="Suppresses the intro text.")
+    parser.add_argument("--json", action="store_true", help="Outputs JSON and exits.")
     args = parser.parse_args()
         
-    clear_terminal()
-    
-    if args.quiet is not True:
-        intro_text()
-
-    clear_terminal()
-    
     drives = scan_drives()
-
     smart_infos = list(map(get_smart_data, drives))
     
     info = smart_infos
-    args.include_non_aliased = True
+    
+    # Print JSON and exit if --json flag is used
+    if args.json:
+        print(json.dumps(info, indent=4))
+        return  # Exit early
+    
+    clear_terminal()
+    # Skip intro text if --quiet is used
+    if not args.quiet:
+        intro_text()
 
-    print("Welcome to the Drive Check!\n")
+    clear_terminal()
     while True:
-        print("Green(New), means the drive is New, with under 500 hours of usage.")
-        print("Yellow(Used), means the drive is Used, with between 500 and 30,040 hours (4 years) of usage.")
-        print("Red(Old), means the drive is Old, with over 4 years of usage. Keep an eye on this one for errors, and consider replacing it with a new one.")
-
-        print("\nPlease choose output format:")
+        print("Welcome to the Drive Check!\n")
+        print("Please choose output format:")
         print("1. text")
         print("2. csv")
         print("3. pdf")
