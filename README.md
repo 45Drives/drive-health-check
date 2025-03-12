@@ -13,6 +13,6 @@ With concerns about used drives being resold as new, it's crucial to check your 
 Depending on your Operating System, the instructions may differ. <br/>
 Check the README file for your OS:
 <br/>
-README-windows.md<br/>
-README-linux.md<br/>
-README-mac.md<br/>
+README-windows-setup.md<br/>
+README-linux-setup.md<br/>
+README-mac-setup.md<br/>
