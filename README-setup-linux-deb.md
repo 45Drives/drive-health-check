@@ -14,7 +14,6 @@ You need Python 3 installed on your system.<br/>
 Verify the installation:
 ```python3 --version```
 
-
 <b>Install Dependencies</b><br/>
 Run the following command to install the required dependencies:<br/>
 
@@ -25,7 +24,6 @@ Run the following command to install the required dependencies:<br/>
 
 ```sudo apt install libgtk-3-dev libpango1.0-0 libcairo2-dev```
 <br/>
-
 
 <h3>Running the Script</h3>
 Download smartctl and place it in the same directory as drive-checker.py:<br/>

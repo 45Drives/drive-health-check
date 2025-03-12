@@ -5,17 +5,23 @@
 You need Python 3 installed on your system.<br/>
 
 <b>Install Python 3 (Windows)</b>
-- Download the latest Python 3 installer from python.org.<br/>
-- Run the installer and check the box for "Add Python to PATH".<br/>
+<!-- - Download the latest Python 3 installer from python.org.<br/>
+- Run the installer and check the box for "Add Python to PATH".<br/> -->
 <br/>
-Click Install Now and follow the prompts.
-<br/>
+Click Install Now and follow the prompts.<br/>
+- Download the latest Python 3 version from the Windows Store App.<br/>
+- Wait for the installation to complete<br/>
+
 Verify the installation by opening Command Prompt (cmd) and running:
 <br/>
 
-```python3 --version```
+```python --version```
 
 <br/>
+If that command doesn't work, try:<br/>
+
+```py --version```
+
 <b>Install Dependencies</b><br/>
 Run the following command to install the required dependencies:<br/>
 
@@ -35,7 +41,6 @@ Run the script with administrator privileges:<br/>
 An executable version of the tool is available in the <i>builds</i> folder.<br/>
 
 Right-click → <i>Run as Administrator</i><br/>
-
 
 <h3>Building the Executable Yourself</h3>
 If you want to generate the executable manually, use pyinstaller:

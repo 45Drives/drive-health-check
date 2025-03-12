@@ -21,7 +21,6 @@ Verify the installation:<br/>
 
 <br/>
 
-
 <b>Install Dependencies</b><br/>
 Run the following command to install the required dependencies:<br/>
 
@@ -31,7 +30,6 @@ Run the following command to install the required dependencies:<br/>
 Ensure you have the necessary system dependencies:<br/>
 
 ```brew install gtk+3 pango cairo```
-
 
 <h3>Running the Script</h3>
 Download smartctl and place it in the same directory as drive-checker.py:<br/>
@@ -57,7 +55,6 @@ If you want to generate the executable manually, use pyinstaller:
 <b>Build the executable:</b><br/>
 
 ```pyinstaller --onefile drive-checker.py --add-data "bin/smartctl:bin"```
-
 
 <b>Additional Notes</b><br/>
 WeasyPrint relies on pycairo and PyGObject, which require GTK and Cairo.<br/>

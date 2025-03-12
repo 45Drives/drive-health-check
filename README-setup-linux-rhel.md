@@ -6,7 +6,6 @@ You need Python 3 installed on your system.<br/>
 
 <b>Install Python 3 (Linux - RHEL/CentOS/Fedora)</b>
 
-
 For <b>RHEL 8+/CentOS 8+/Fedora</b>:<br/>
 ```sudo dnf install python3```
 
@@ -14,7 +13,6 @@ For <b>RHEL 8+/CentOS 8+/Fedora</b>:<br/>
 Verify the installation:
 
 ```python3 --version```
-
 
 <b>Install Dependencies</b><br/>
 Run the following command to install the required dependencies:<br/>
@@ -26,7 +24,6 @@ Run the following command to install the required dependencies:<br/>
 
 ```sudo dnf install gtk3-devel pango-devel cairo-devel```
 <br/>
-
 
 <h3>Running the Script</h3>
 Download smartctl and place it in the same directory as drive-checker.py:<br/>
