@@ -13,6 +13,6 @@ With concerns about used drives being resold as new, it's crucial to check your 
 Depending on your Operating System, the instructions may differ. <br/>
 Check the README file for your OS:
 <br/>
-README-windows-setup.md<br/>
-README-linux-setup.md<br/>
-README-mac-setup.md<br/>
+<a href="https://github.com/45Drives/drive-health-check/blob/main/README-windows.md">README-windows-setup.md</a><br/>
+<a href="https://github.com/45Drives/drive-health-check/blob/main/README-linux.md">README-linux-setup.md</a><br/>
+<a href="https://github.com/45Drives/drive-health-check/blob/main/README-mac.md">README-mac-setup.md</a><br/>
