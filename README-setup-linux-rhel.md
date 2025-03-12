@@ -1,33 +1,37 @@
 # drive-health-check
-<h2>Windows</h2>
+<h2>Linux</h2>
 <h3>Getting Started</h3>
 <b>Prerequisites</b><br/>
 You need Python 3 installed on your system.<br/>
 
-<b>Install Python 3 (Windows)</b>
-- Download the latest Python 3 installer from python.org.<br/>
-- Run the installer and check the box for "Add Python to PATH".<br/>
-<br/>
-Click Install Now and follow the prompts.
-<br/>
-Verify the installation by opening Command Prompt (cmd) and running:
-<br/>
-
-```python --version```
+<b>Install Python 3 (Linux - RHEL/CentOS/Fedora)</b>
 
 
+For <b>RHEL 8+/CentOS 8+/Fedora</b>:<br/>
+```sudo dnf install python3```
+
 <br/>
+Verify the installation:
+
+```python3 --version```
+
+
 <b>Install Dependencies</b><br/>
 Run the following command to install the required dependencies:<br/>
 
 ```pip install WeasyPrint==52.5 pycairo PyGObject```
 <br/>
 
+<b>Note:</b>You may need additional system dependencies:<br/>
+
+```sudo dnf install gtk3-devel pango-devel cairo-devel```
+<br/>
+
 
 <h3>Running the Script</h3>
 Download smartctl and place it in the same directory as drive-checker.py:<br/>
 
-```bin/smartctl.exe```<br/>
+```bin/smartctl```
 
 Run the script with administrator privileges:<br/>
 ```sudo python3 drive-checker.py```
@@ -35,9 +39,6 @@ Run the script with administrator privileges:<br/>
 
 <b>Using the Prebuilt Executable</b><br/>
 An executable version of the tool is available in the <i>builds</i> folder.<br/>
-
-Right-click → <i>Run as Administrator</i><br/>
-
 
 <h3>Building the Executable Yourself</h3>
 If you want to generate the executable manually, use pyinstaller:
@@ -49,7 +50,7 @@ If you want to generate the executable manually, use pyinstaller:
 
 <b>Build the executable:</b><br/>
 
-```pyinstaller --onefile drive-checker.py --add-data "bin/smartctl.exe;bin"```
+```pyinstaller --onefile drive-checker.py --add-data "bin/smartctl:bin"```
 <br/>
 
 <b>Additional Notes</b><br/>

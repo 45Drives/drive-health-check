@@ -4,20 +4,15 @@
 <b>Prerequisites</b><br/>
 You need Python 3 installed on your system.<br/>
 
-<b>Install Python 3 (Linux)</b>
+<b>Install Python 3 (Linux - Debian/Ubuntu)</b>
 
-For <b>Debian/Ubuntu</b>:<br/>
 ```sudo apt update```
 ```sudo apt install python3```
 
-For <b>CentOS/RHEL</b>:<br/>
-```sudo yum install python3```
-For <b>Fedora</b>:<br/>
-```sudo dnf install python3```
 <br/>
 
 Verify the installation:
-```python --version```
+```python3 --version```
 
 
 <b>Install Dependencies</b><br/>
@@ -26,14 +21,9 @@ Run the following command to install the required dependencies:<br/>
 ```pip install WeasyPrint==52.5 pycairo PyGObject```
 <br/>
 
-<b>Note:</b> On some distributions, you may need additional system dependencies:<br/>
+<b>Note:</b> You may need additional system dependencies:<br/>
 
-<b>Debian/Ubuntu:</b><br/>
-```sudo apt install libgtk-3-dev libpango1.0-dev libcairo2-dev```
-<br/>
-
-<b>Fedora:</b><br/>
-```sudo dnf install gtk3-devel pango-devel cairo-devel```
+```sudo apt install libgtk-3-dev libpango1.0-0 libcairo2-dev```
 <br/>
 
 
