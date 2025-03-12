@@ -6,10 +6,11 @@ You need Python 3 installed on your system.<br/>
 <!-- 
 <b>Install Python 3 (Windows)</b>
 - Download the latest Python 3 installer from python.org.<br/>
-- Run the installer and check the box for "Add Python to PATH".<br/> -->
+- Run the installer and check the box for "Add Python to PATH".<br/>
+- Click Install Now and follow the prompts.<br/> -->
 <b>Install Python 3 (Windows)</b>
 <br/>
-Click Install Now and follow the prompts.<br/>
+
 - Download the latest Python 3 version from the Windows Store App.<br/>
 - Wait for the installation to complete<br/>
 
