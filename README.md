@@ -1,36 +1,76 @@
 # drive-health-check
-A tool to check the health of your drives and ensure they are as old or new as you think they are.
+A tool to verify the health and authenticity of your hard drives.
 <br/><br/>
-With recent concerns about used drives being resold as new, it’s more important than ever to verify the condition of your storage devices. This tool helps you quickly assess the health, usage, ensuring you get exactly what you paid for.
+With concerns about used drives being resold as new, it's crucial to check your storage devices before trusting them. This tool helps you quickly assess a drive’s condition, usage history, and overall health to ensure you get exactly what you paid for.
 <br/><br/>
   What This Tool Does:<br/>
-    - Health Status: Check for signs of wear, bad sectors, and overall lifespan.<br/>
-    - Usage History: See how many hours the drive has been used and how much data has been written.<br/>
-    - SMART Data Analysis: Review key health indicators reported by the drive itself.<br/>
-    - Peace of Mind: Confirm whether your drive is truly new or has been previously used.<br/>
+ - Health Status – Detect signs of wear, bad sectors, and lifespan indicators.<br/>
+ - Usage History – Check power-on hours and total data written.<br/>
+ - SMART Data Analysis – Review key attributes reported by the drive.<br/>
+ - Peace of Mind – Confirm whether your drive is genuinely new or previously used.<br/>
 
+<h3>Getting Started</h3><br/>
+<b>Prerequisites</b><br/>
+You need Python 3 installed on your system.<br/>
+<br/>
+<b>Install Dependencies</b><br/>
+Run the following command to install the required dependencies:<br/>
 
-There is a python script (drive-checker.py) and an executable file.
-<br/>
-The script can be run as follows:
-<br/>
-Depending on what operating system you are running on, get the appropriate file from the <i>bin</i> folder<br/> and place it next to drive-checker.py in the same directory.<br/>
-Windows: smartctl.exe<br/>
-Linux: smartctl<br/>
-Mac: smartctl_mac<br/>
-<br/>
-Next, run 'pip install WeasyPrint==52.5' and then run script with 'sudo python3 drive-checker.py'
-<br/>
+```pip install WeasyPrint==52.5 pycairo PyGObject```
 <br/>
 
-The executable file is located within the <i>builds</i> folder.
+<b>Note:</b> On some Linux distributions, you may need additional system dependencies:<br/>
+
+<b>Debian/Ubuntu:</b><br/>
+```sudo apt install libgtk-3-dev libpango1.0-dev libcairo2-dev```
+<br/>
+
+<b>Fedora:</b><br/>
+```sudo dnf install gtk3-devel pango-devel cairo-devel```
+<br/>
+
+<b>MacOS:</b> Ensure you have brew installed, then run:<br/>
+```brew install gtk+3 pango cairo```
 <br/>
 
 
-To build executable yourself:
+<h3>Running the Script</h3><br/>
+Download smartctl (depends on your OS) and place it in the same directory as drive-checker.py:<br/>
+
+<b>Windows:</b> Use bin/smartctl.exe<br/>
+<b>Linux:</b> Use bin/smartctl<br/>
+<b>Mac:</b> Use bin/smartctl_mac (rename it to smartctl)<br/>
+
+Run the script with administrator privileges:<br/>
+```sudo python3 drive-checker.py```
 <br/>
-pip install WeasyPrint==52.5 pyinstaller<br/>
-pyinstaller --onefile drive-checker.py --add-data "bin/smartctl:bin"<br/>
-pyinstaller --onefile drive-checker.py --add-data "bin/smartctl.exe;bin"<br/>
+
+<b>Using the Prebuilt Executable</b><br/>
+An executable version of the tool is available in the <i>builds</i> folder.<br/>
+
+On Windows: Right-click → <i>Run as Administrator</i><br/>
+
+
+<h3>Building the Executable Yourself</h3><br/>
+If you want to generate the executable manually, use pyinstaller:
 <br/>
-rename smartctl_mac to smartctl<br/>
+<b>Install dependencies:</b><br/>
+
+```pip install WeasyPrint==52.5 pyinstaller```
+<br/>
+
+<b>Build the executable:</b><br/>
+
+<b>Linux/macOS:</b><br/>
+```pyinstaller --onefile drive-checker.py --add-data "bin/smartctl:bin"```
+<br/>
+
+<b>Windows:</b><br/>
+```pyinstaller --onefile drive-checker.py --add-data "bin/smartctl.exe;bin"```
+<br/>
+
+If using macOS, rename smartctl_mac to smartctl before running the script.<br/>
+
+<b>Additional Notes</b><br/>
+WeasyPrint relies on pycairo and PyGObject, which require GTK and Cairo.<br/>
+If you encounter any issues, ensure the necessary system packages are installed.<br/>
