@@ -1,5 +1,5 @@
 # drive-health-check
-A tool to verify the health and authenticity of your hard drives.
+A tool that allows you to see if your drive is <b>NEW</b> or <b>USED</b>.
 <br/><br/>
 With concerns about used drives being resold as new, it's crucial to check your storage devices before trusting them. This tool helps you quickly assess a drive’s condition, usage history, and overall health to ensure you get exactly what you paid for.
 <br/><br/>
