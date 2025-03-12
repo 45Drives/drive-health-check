@@ -14,13 +14,19 @@ There is a python script (drive-checker.py) and an executable file.
 <br/>
 The script can be run as follows:
 <br/>
+Depending on what operating system you are running on, get the appropriate file from the <i>bin</i> folder<br/> and place it next to drive-checker.py in the same directory.<br/>
+Windows: smartctl.exe<br/>
+Linux: smartctl<br/>
+Mac: smartctl_mac<br/>
+<br/>
+Next, run 'pip install WeasyPrint==52.5' and then run script with 'sudo python3 drive-checker.py'
+<br/>
+<br/>
+
+To build yourself:
+<br/>
 pip install WeasyPrint==52.5 pyinstaller<br/>
 pyinstaller --onefile drive-checker.py --add-data "bin/smartctl:bin"<br/>
 pyinstaller --onefile drive-checker.py --add-data "bin/smartctl.exe;bin"<br/>
 <br/>
 rename smartctl_mac to smartctl<br/>
-<br/>
-sudo python3 drive-checker.py --drive-check<br/>
-<br/>
-
-The executable is "main_with_drive-check.exe" and can be run.
