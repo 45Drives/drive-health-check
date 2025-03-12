@@ -9,7 +9,7 @@ With concerns about used drives being resold as new, it's crucial to check your 
  - SMART Data Analysis – Review key attributes reported by the drive.<br/>
  - Peace of Mind – Confirm whether your drive is genuinely new or previously used.<br/>
 
-<h3>Getting Started</h3><br/>
+<h3>Getting Started</h3>
 <b>Prerequisites</b><br/>
 You need Python 3 installed on your system.<br/>
 <br/>
@@ -34,7 +34,7 @@ Run the following command to install the required dependencies:<br/>
 <br/>
 
 
-<h3>Running the Script</h3><br/>
+<h3>Running the Script</h3>
 Download smartctl (depends on your OS) and place it in the same directory as drive-checker.py:<br/>
 
 <b>Windows:</b> Use bin/smartctl.exe<br/>
@@ -51,7 +51,7 @@ An executable version of the tool is available in the <i>builds</i> folder.<br/>
 On Windows: Right-click → <i>Run as Administrator</i><br/>
 
 
-<h3>Building the Executable Yourself</h3><br/>
+<h3>Building the Executable Yourself</h3>
 If you want to generate the executable manually, use pyinstaller:
 <br/>
 <b>Install dependencies:</b><br/>
