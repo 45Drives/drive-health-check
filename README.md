@@ -23,7 +23,11 @@ Next, run 'pip install WeasyPrint==52.5' and then run script with 'sudo python3 
 <br/>
 <br/>
 
-To build yourself:
+The executable file is located within the <i>builds</i> folder.
+<br/>
+
+
+To build executable yourself:
 <br/>
 pip install WeasyPrint==52.5 pyinstaller<br/>
 pyinstaller --onefile drive-checker.py --add-data "bin/smartctl:bin"<br/>
