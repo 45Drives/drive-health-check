@@ -1,5 +1,5 @@
 # drive-health-check
-A tool to verify the health and authenticity of your hard drives.
+A tool that allows you to see if your drive is <b>NEW</b> or <b>USED</b>.
 <br/><br/>
 With concerns about used drives being resold as new, it's crucial to check your storage devices before trusting them. This tool helps you quickly assess a drive’s condition, usage history, and overall health to ensure you get exactly what you paid for.
 <br/><br/>
@@ -13,6 +13,6 @@ With concerns about used drives being resold as new, it's crucial to check your 
 Depending on your Operating System, the instructions may differ. <br/>
 Check the README file for your OS:
 <br/>
-README-windows-setup.md<br/>
-README-linux-setup.md<br/>
-README-mac-setup.md<br/>
+<a href="https://github.com/45Drives/drive-health-check/blob/main/README-windows-setup.md">README-windows-setup.md</a><br/>
+<a href="https://github.com/45Drives/drive-health-check/blob/main/README-linux-setup.md">README-linux-setup.md</a><br/>
+<a href="https://github.com/45Drives/drive-health-check/blob/main/README-mac-setup.md">README-mac-setup.md</a><br/>
