@@ -45,7 +45,7 @@ Run the script with administrator privileges:<br/>
 ```sudo python3 drive-checker.py```
 <br/>
 
-<b>Using the Prebuilt Executable</b><br/>
+<h3>Using the Prebuilt Executable</h3>
 An executable version of the tool is available in the <i>builds</i> folder.<br/>
 
 Right-click → <i>Run as Administrator</i><br/>
