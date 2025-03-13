@@ -54,7 +54,7 @@ If you want to generate the executable manually, use pyinstaller:
 
 <b>Build the executable:</b><br/>
 
-```pyinstaller --onefile drive-checker.py --add-data "bin/smartctl:bin"```
+```pyinstaller --onefile drive-checker.py --add-data "bin_mac_arm/smartctl:bin"```
 
 <b>Additional Notes</b><br/>
 WeasyPrint relies on pycairo and PyGObject, which require GTK and Cairo.<br/>
