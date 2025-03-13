@@ -134,11 +134,11 @@ def get_drive_diagnosis(smart_info: dict) -> str:
     
      # 🚀 **Green - Healthy Condition**
     if power_on_hours == 'N/A' or power_on_hours <= 1:
-        return "Lightly Used"  # lightly used condition
+        return "New"  # new used condition
     
     # 🚀 **Green - Healthy Condition**
     if power_on_hours < MID_USAGE_THRESHOLD:
-        return "New"  # Good condition
+        return "Lightly used"  # lightly used condition
 
     # ⚠️ **Yellow - Warning Condition**
     elif MID_USAGE_THRESHOLD <= power_on_hours < HIGH_USAGE_THRESHOLD:
