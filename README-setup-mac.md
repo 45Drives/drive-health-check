@@ -53,7 +53,7 @@ If you want to generate the executable manually, use pyinstaller:
 <br/>
 
 <b>Build the executable:</b><br/>
-
+```cd app```
 ```pyinstaller --onefile drive-checker.py --add-data "bin_mac_arm/smartctl:bin"```
 
 <b>Additional Notes</b><br/>

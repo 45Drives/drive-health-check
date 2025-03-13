@@ -47,6 +47,7 @@ If you want to generate the executable manually, use pyinstaller:
 
 <b>Build the executable:</b><br/>
 
+```cd app```
 ```pyinstaller --onefile drive-checker.py --add-data "bin/smartctl:bin"```
 <br/>
 

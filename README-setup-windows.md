@@ -56,11 +56,13 @@ If you want to generate the executable manually, use pyinstaller:
 <b>Install dependencies:</b><br/>
 
 ```pip install WeasyPrint==52.5 pyinstaller```
+Get GTK-for-Windows-Runtime-Environment-Installer. I think just installing will work but we downloaded the zip and added dlls manually to build. See Build below.
 <br/>
 
 <b>Build the executable:</b><br/>
-
-```pyinstaller --onefile drive-checker.py --add-data "bin/smartctl.exe;bin"```
+make sure to add the GTK runtime binaries
+```cd app```
+```pyinstaller --onefile drive-checker.py --add-data "bin/smartctl.exe;bin" --add-binary "bin/*.dll;."```
 <br/>
 
 <b>Additional Notes</b><br/>

@@ -256,7 +256,6 @@ def output_drive_check_info_text(smart_data):
             # print(f'drive: {drive}')
 
 
-
 def output_drive_check_info_csv(smart_infos, filename="drive_info.csv"):
     """Write drive SMART info to a CSV file."""
     if not smart_infos:
