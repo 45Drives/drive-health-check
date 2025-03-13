@@ -25,6 +25,12 @@ If that command doesn't work, try:<br/>
 ```py --version```
 
 <b>Install Dependencies</b><br/>
+Make sure you have pip installed:<br/>
+```pip --version```
+<br/>
+If it isn't, run:
+```python -m pip install --upgrade pip```<br/>
+
 Run the following command to install the required dependencies:<br/>
 
 ```pip install WeasyPrint==52.5 pycairo PyGObject```
