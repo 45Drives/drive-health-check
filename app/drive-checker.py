@@ -133,8 +133,8 @@ def get_drive_diagnosis(smart_info: dict) -> str:
     MID_USAGE_THRESHOLD = 500
     
      # 🚀 **Green - Healthy Condition**
-    if power_on_hours == 'N/A' or power_on_hours == 1:
-        return "Fresh"  # Fresh condition
+    if power_on_hours == 'N/A' or power_on_hours <= 1:
+        return "Lightly Used"  # lightly used condition
     
     # 🚀 **Green - Healthy Condition**
     if power_on_hours < MID_USAGE_THRESHOLD:
@@ -205,12 +205,14 @@ def output_drive_check_info_text(smart_data):
     # ANSI Color Codes
     GREEN = "\033[92m"  # Green
     YELLOW = "\033[93m"  # Yellow
+    ORANGE = "\033[38;5;214m"  # Yellow
     RED = "\033[91m"  # Red
     RESET = "\033[0m"  # Reset to default terminal color
 
     print("\nLEGEND:")
-    print(f"{GREEN}Green{RESET}: means the drive is either FRESH (up to 1 hour of usage time) or NEW (under 500 hours).")
-    print(f"{YELLOW}Yellow{RESET}: means the drive is USED (between 500 and 30,040 hours of usage time).")
+    print(f"{GREEN}Green{RESET}: means the drive is NEW (under 1 hour of usage time)")
+    print(f"{YELLOW}Yellow{RESET}: means the drive is LIGHTLY USED (between 1 and 500 hours of usage time).")
+    print(f"{ORANGE}Orange{RESET}: means the drive is USED (between 500 and 30,040 hours of usage time).")
     print(f"{RED}Red{RESET}: means the drive is OLD, with over 4 years of usage time.")
     print("     (Keep an eye on this one for errors, and consider replacing it with a new one.)\n")
 
@@ -231,10 +233,12 @@ def output_drive_check_info_text(smart_data):
             diagnosis = drive["Diagnosis"]
 
             # Assign color based on diagnosis
-            if diagnosis == "New" or diagnosis == "Fresh":
+            if diagnosis == "New":
                 color = GREEN
-            elif diagnosis == "Used":
+            elif diagnosis == "Lightly Used":
                 color = YELLOW
+            elif diagnosis == "Used":
+                color = ORANGE
             elif diagnosis == "Old":
                 color = RED
             else:
@@ -301,7 +305,7 @@ def generate_drive_report_html(smart_infos):
             }
 
            /* Conditional styling for Diagnosis */
-            .brand-new { background-color: #7bff4f; }   /* Light Green - Fresh */
+            .lightly-used { background-color: #ffa500; }   /* Light Green - Lightly Used */
             .new { background-color: #03d103; }   /* Green - New */
             .used { background-color: #ffff00;  } /* Yellow - Used */
             .old { background-color: #ff3f3f; }   /* Red - Old */
@@ -313,8 +317,8 @@ def generate_drive_report_html(smart_infos):
     <body>
         <h3>45Drives Disk Check-Up</h3>
         <div>
-            <p><span class="brand-new"><b>Light Green</b></span> means the drive is Fresh, brand new right out of the package.</p>
-            <p><span class="new"><b>Green</b></span> means the drive is New, with under 500 hours of usage.</p>
+            <p><span class="new"><b>Green</b></span> means the drive brand new right out of the package(under 1 hour of usage).</p>
+            <p><span class="lightly-used"><b>Orange</b></span> means the drive is Lightly Used, with between 1 and 500 hours .</p>
             <p><span class="used"><b>Yellow</b></span> means the drive is Used, with between 500 and 30,040 hours (4 years) of usage.</p>
             <p><span class="old"><b>Red</b></span> means the drive is Old, with over 4 years of usage. Keep an eye on this one for errors, and consider replacing it with a new one.</p>
         </div>
@@ -338,10 +342,10 @@ def generate_drive_report_html(smart_infos):
 
         # Assign a class based on diagnosis for conditional styling
         diagnosis_class = "unknown"
-        if diagnosis == "Fresh":
-            diagnosis_class = "brand-new"
-        elif diagnosis == "New":
+        if diagnosis == "New":
             diagnosis_class = "new"
+        elif diagnosis == "Lightly Used":
+            diagnosis_class = "lightly-used"
         elif diagnosis == "Used":
             diagnosis_class = "used"
         elif diagnosis == "Old":
