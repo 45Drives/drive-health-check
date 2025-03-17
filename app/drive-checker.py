@@ -138,7 +138,7 @@ def get_drive_diagnosis(smart_info: dict) -> str:
     
     # 🚀 **Green - Healthy Condition**
     if power_on_hours < MID_USAGE_THRESHOLD:
-        return "Lightly used"  # lightly used condition
+        return "Lightly Used"  # lightly used condition
 
     # ⚠️ **Yellow - Warning Condition**
     elif MID_USAGE_THRESHOLD <= power_on_hours < HIGH_USAGE_THRESHOLD:
@@ -205,14 +205,14 @@ def output_drive_check_info_text(smart_data):
     # ANSI Color Codes
     GREEN = "\033[92m"  # Green
     YELLOW = "\033[93m"  # Yellow
-    ORANGE = "\033[38;5;214m"  # Yellow
+    ORANGE = "\033[38;5;214m" # Orange
     RED = "\033[91m"  # Red
     RESET = "\033[0m"  # Reset to default terminal color
 
     print("\nLEGEND:")
     print(f"{GREEN}Green{RESET}: means the drive is NEW (under 1 hour of usage time)")
     print(f"{YELLOW}Yellow{RESET}: means the drive is LIGHTLY USED (between 1 and 500 hours of usage time).")
-    print(f"{ORANGE}Orange{RESET}: means the drive is USED (between 500 and 30,040 hours of usage time).")
+    print(f"{ORANGE}Orange{RESET}: means the drive is USED (between 500 and 35,040 hours of usage time).")
     print(f"{RED}Red{RESET}: means the drive is OLD, with over 4 years of usage time.")
     print("     (Keep an eye on this one for errors, and consider replacing it with a new one.)\n")
 
@@ -304,9 +304,9 @@ def generate_drive_report_html(smart_infos):
             }
 
            /* Conditional styling for Diagnosis */
-            .lightly-used { background-color: #ffa500; }   /* Light Green - Lightly Used */
-            .new { background-color: #03d103; }   /* Green - New */
-            .used { background-color: #ffff00;  } /* Yellow - Used */
+            .new { background-color: #03d103; } /* Green - New */
+            .lightly-used { background-color:  #ffff00;}  /* Yellow - Lightly Used */
+            .used { background-color:  #ffa500; } /* Orange - Used */
             .old { background-color: #ff3f3f; }   /* Red - Old */
             .unknown { background-color: #D9D9D9;  }   /* Grey - Unknown */
         
@@ -317,8 +317,8 @@ def generate_drive_report_html(smart_infos):
         <h3>45Drives Disk Check-Up</h3>
         <div>
             <p><span class="new"><b>Green</b></span> means the drive brand new right out of the package(under 1 hour of usage).</p>
-            <p><span class="lightly-used"><b>Orange</b></span> means the drive is Lightly Used, with between 1 and 500 hours .</p>
-            <p><span class="used"><b>Yellow</b></span> means the drive is Used, with between 500 and 30,040 hours (4 years) of usage.</p>
+            <p><span class="lightly-used"><b>Yellow</b></span> means the drive is Lightly Used, with between 1 and 500 hours .</p>
+            <p><span class="used"><b>Orange</b></span> means the drive is Used, with between 500 and 35,040 hours (4 years) of usage.</p>
             <p><span class="old"><b>Red</b></span> means the drive is Old, with over 4 years of usage. Keep an eye on this one for errors, and consider replacing it with a new one.</p>
         </div>
         <table>
