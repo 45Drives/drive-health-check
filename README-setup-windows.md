@@ -43,7 +43,6 @@ Run the following command to install the required dependencies:<br/>
 ```pip install WeasyPrint==52.5 pycairo PyGObject```
 <br/>
 
-<h3>Running the Script</h3>
 Download smartctl and place it in the same directory as drive-checker.py:<br/>
 
 ```bin/smartctl.exe```<br/>
@@ -52,6 +51,8 @@ Run the script with administrator privileges:<br/>
 ```sudo python3 drive-checker.py```
 <br/>
 
+
+<br/>
 <h3>Building the Executable Yourself</h3>
 If you want to generate the executable manually, use pyinstaller:
 <br/>

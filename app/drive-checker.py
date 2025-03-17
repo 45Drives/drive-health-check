@@ -534,8 +534,8 @@ def intro_text():
     
     input("Press Enter to Continue\n")
 
-def clear_terminal():
-    os.system('cls' if os.name == 'nt' else 'clear')
+def clear_console():
+    print("\033c", end="")
     
 # ------------------------------
 # Main Entry Point
@@ -561,12 +561,12 @@ def main():
         print(json.dumps(info, indent=4))
         return  # Exit early
     
-    clear_terminal()
+    clear_console()
     # Skip intro text if --quiet is used
     if not args.quiet:
         intro_text()
 
-    clear_terminal()
+    clear_console()
     while True:
         print("Welcome to the Drive Check!\n")
         print("Please choose output format:")
