@@ -212,7 +212,7 @@ def output_drive_check_info_text(smart_data):
     print("\nLEGEND:")
     print(f"{GREEN}Green{RESET}: means the drive is NEW (under 1 hour of usage time)")
     print(f"{YELLOW}Yellow{RESET}: means the drive is LIGHTLY USED (between 1 and 500 hours of usage time).")
-    print(f"{ORANGE}Orange{RESET}: means the drive is USED (between 500 and 30,040 hours of usage time).")
+    print(f"{ORANGE}Orange{RESET}: means the drive is USED (between 500 and 35,040 hours of usage time).")
     print(f"{RED}Red{RESET}: means the drive is OLD, with over 4 years of usage time.")
     print("     (Keep an eye on this one for errors, and consider replacing it with a new one.)\n")
 
@@ -318,7 +318,7 @@ def generate_drive_report_html(smart_infos):
         <div>
             <p><span class="new"><b>Green</b></span> means the drive brand new right out of the package(under 1 hour of usage).</p>
             <p><span class="lightly-used"><b>Orange</b></span> means the drive is Lightly Used, with between 1 and 500 hours .</p>
-            <p><span class="used"><b>Yellow</b></span> means the drive is Used, with between 500 and 30,040 hours (4 years) of usage.</p>
+            <p><span class="used"><b>Yellow</b></span> means the drive is Used, with between 500 and 35,040 hours (4 years) of usage.</p>
             <p><span class="old"><b>Red</b></span> means the drive is Old, with over 4 years of usage. Keep an eye on this one for errors, and consider replacing it with a new one.</p>
         </div>
         <table>
@@ -370,7 +370,7 @@ def generate_drive_report_html(smart_infos):
     </html>
     """
 
-    return html_content  # Return the HTML string
+    return html_content  # Return the HTML string5
 
 
 def output_drive_check_info_pdf(smart_infos, filename="drive_info.pdf", landscape=False):
