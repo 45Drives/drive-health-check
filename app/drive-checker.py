@@ -532,7 +532,7 @@ def intro_text():
     print("\t✅ SMART Data Analysis: Review key health indicators reported by the drive itself.")
     print("\t✅ Peace of Mind: Confirm whether your drive is truly new or has been previously used.")
     
-    input("Press Any Key to Continue\n")
+    input("Press Enter to Continue\n")
 
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
