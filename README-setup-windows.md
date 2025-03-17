@@ -2,7 +2,7 @@
 <h2>Windows</h2>
 <h3>Getting Started</h3>
 <b>Prerequisites</b><br/>
-You need Python 3 installed on your system.<br/>
+You will need Python 3 installed on your system.<br/>
 <!-- 
 <b>Install Python 3 (Windows)</b>
 - Download the latest Python 3 installer from python.org.<br/>
@@ -20,9 +20,16 @@ Verify the installation by opening Command Prompt (cmd) and running:
 ```python --version```
 
 <br/>
-If that command doesn't work, try:<br/>
 
-```py --version```
+<h3>**Recommended**: Using the Prebuilt Executable</h3>
+An executable version of the tool is available in the <i>builds</i> folder.<br/>
+
+Right-click → <i>Run as Administrator</i><br/>
+
+
+
+<br/>
+<h3>Running the Script</h3>
 
 <b>Install Dependencies</b><br/>
 Make sure you have pip installed:<br/>
@@ -44,11 +51,6 @@ Download smartctl and place it in the same directory as drive-checker.py:<br/>
 Run the script with administrator privileges:<br/>
 ```sudo python3 drive-checker.py```
 <br/>
-
-<h3>Using the Prebuilt Executable</h3>
-An executable version of the tool is available in the <i>builds</i> folder.<br/>
-
-Right-click → <i>Run as Administrator</i><br/>
 
 <h3>Building the Executable Yourself</h3>
 If you want to generate the executable manually, use pyinstaller:
