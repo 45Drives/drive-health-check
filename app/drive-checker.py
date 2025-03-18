@@ -11,6 +11,9 @@ import csv
 import webbrowser
 from weasyprint import HTML, CSS
     
+# Redirect stderr at the OS level to a file
+log_file = open("drive-checker-log.txt", "w")
+os.dup2(log_file.fileno(), sys.stderr.fileno())
 
 def get_local_smartctl_path():
     if getattr(sys, 'frozen', False):  # running from PyInstaller bundle
@@ -527,12 +530,14 @@ def intro_text():
     print("With recent concerns about used drives being resold as new, it’s more important than ever to verify the condition of your storage devices.")
     print("This tool helps you quickly assess the health, usage, ensuring you get exactly what you paid for.")
     print("What This Tool Does:")
-    print("\t✅ Health Status: Check for signs of wear, bad sectors, and overall lifespan.")
-    print("\t✅ Usage History: See how many hours the drive has been used and how much data has been written.")
-    print("\t✅ SMART Data Analysis: Review key health indicators reported by the drive itself.")
-    print("\t✅ Peace of Mind: Confirm whether your drive is truly new or has been previously used.")
+    print("\t Health Status: Check for signs of wear, bad sectors, and overall lifespan.")
+    print("\t Usage History: See how many hours the drive has been used and how much data has been written.")
+    print("\t SMART Data Analysis: Review key health indicators reported by the drive itself.")
+    print("\t Peace of Mind: Confirm whether your drive is truly new or has been previously used.")
     
-    input("Press Enter to Continue\n")
+    # input("Press Enter to Continue\n")
+    print("Press Enter to Continue\n")
+    input()
 
 def clear_console():
     print("\033c", end="")
@@ -541,7 +546,6 @@ def clear_console():
 # Main Entry Point
 # ------------------------------
 def main():
-    
     # Force admin elevation on Windows before showing UI.
     if platform.system() == "Windows" and not is_admin():
         run_as_admin()
@@ -565,8 +569,8 @@ def main():
     # Skip intro text if --quiet is used
     if not args.quiet:
         intro_text()
+        clear_console()
 
-    clear_console()
     while True:
         print("Welcome to the Drive Check!\n")
         print("Please choose output format:")
