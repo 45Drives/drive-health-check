@@ -67,6 +67,9 @@ make sure to add the GTK runtime binaries
 ```cd app```
 ```pyinstaller --onefile drive-checker.py --add-data "bin/smartctl.exe;bin" --add-binary "bin/*.dll;."```
 <br/>
+Replace "bin/*dll;." with the actual path to your GTK binaries 
+(eg. "C:\Program Files\GTK3-Runtime Win64\bin\*dll;.")
+<br/>
 
 <b>Additional Notes</b><br/>
 WeasyPrint relies on pycairo and PyGObject, which require GTK and Cairo.<br/>
