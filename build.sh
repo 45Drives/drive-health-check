@@ -13,19 +13,19 @@ LOCAL_OUTPUT_DIR="$(dirname "$0")/builds"
 
 mkdir -p "$LOCAL_OUTPUT_DIR"
 
-# # Build on Windows
-# echo "🔧 Building on Windows..."
-# ssh "$WIN_HOST" "cmd.exe /c \"if not exist build_temp mkdir build_temp && if not exist build_temp\\app mkdir build_temp\\app\""
-# scp -r "$LOCAL_APP_DIR" "$WIN_HOST:$REMOTE_BUILD_DIR"
-# ssh "$WIN_HOST" "cd $REMOTE_BUILD_DIR && pyinstaller --onefile app/drive-checker.py --add-data app/bin/smartctl.exe;bin --add-binary bin/*.dll;."
-# scp "$WIN_HOST:$REMOTE_BUILD_DIR/dist/drive-checker.exe" "$LOCAL_OUTPUT_DIR/drive-checker-windows.exe"
+# Build on Windows
+echo "🔧 Building on Windows..."
+ssh "$WIN_HOST" "cmd.exe /c \"if not exist build_temp mkdir build_temp && if not exist build_temp\\app mkdir build_temp\\app\""
+scp -r "$LOCAL_APP_DIR" "$WIN_HOST:$REMOTE_BUILD_DIR"
+ssh "$WIN_HOST" "cd $REMOTE_BUILD_DIR && pyinstaller --onefile app/drive-checker.py --add-data app/bin/smartctl.exe;bin --add-binary bin/*.dll;."
+scp "$WIN_HOST:$REMOTE_BUILD_DIR/dist/drive-checker.exe" "$LOCAL_OUTPUT_DIR/drive-checker-windows.exe"
 
-# # Build on Linux
-# echo "🐧 Building on Linux..."
-# ssh "$LINUX_HOST" "rm -rf $REMOTE_BUILD_DIR && mkdir -p $REMOTE_BUILD_DIR"
-# scp -r "$LOCAL_APP_DIR" "$LINUX_HOST:$REMOTE_BUILD_DIR/app"
-# ssh "$LINUX_HOST" "cd $REMOTE_BUILD_DIR && pyinstaller --onefile app/drive-checker.py --add-data 'app/bin/smartctl:bin'"
-# scp "$LINUX_HOST:$REMOTE_BUILD_DIR/dist/drive-checker" "$LOCAL_OUTPUT_DIR/drive-checker-linux"
+# Build on Linux
+echo "🐧 Building on Linux..."
+ssh "$LINUX_HOST" "rm -rf $REMOTE_BUILD_DIR && mkdir -p $REMOTE_BUILD_DIR"
+scp -r "$LOCAL_APP_DIR" "$LINUX_HOST:$REMOTE_BUILD_DIR/app"
+ssh "$LINUX_HOST" "cd $REMOTE_BUILD_DIR && pyinstaller --onefile app/drive-checker.py --add-data 'app/bin/smartctl:bin'"
+scp "$LINUX_HOST:$REMOTE_BUILD_DIR/dist/drive-checker" "$LOCAL_OUTPUT_DIR/drive-checker-linux"
 
 # Build on macOS
 echo "🍏 Building on macOS..."
