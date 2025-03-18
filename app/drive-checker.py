@@ -117,12 +117,12 @@ def get_smart_data2(stdout):
         if "smart_status" in smart_json.keys() and smart_json["smart_status"]["passed"]
         else "POOR"
     )
-    smart_info["Diagnosis"] = get_drive_diagnosis(smart_info)
+    smart_info["Diagnosis"] = get_drive_usage(smart_info)
     
     # print(f'smartInfo: {json.dumps(smart_info, indent=4)}')
     return smart_info
 
-def get_drive_diagnosis(smart_info: dict) -> str:
+def get_drive_usage(smart_info: dict) -> str:
     """Classify drive age based only on Power-On Hours."""
     
     # Extract power-on hours (default to 0 if missing)
@@ -536,7 +536,7 @@ def intro_text():
 
 def clear_console():
     print("\033c", end="")
-    
+
 # ------------------------------
 # Main Entry Point
 # ------------------------------

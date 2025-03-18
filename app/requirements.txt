@@ -1,0 +1,2 @@
+weasyprint==52.5
+pyinstaller
